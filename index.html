@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head><style type="text/css">.lw { font-size: 60px; }</style>
+
+
+<title>Random Tiamat Zerg Time for "Overload"</title>
+</head>
+<body>
+<!-- Start your code here -->
+<h1 id="zergtime"></h1>
+  <button style="display: block;" id="btn" onclick="NewTime(120)">New Time (40 sec-2 min)</button>
+   <button style="display: block;" id="btn2" onclick="NewTime(180)">New Time (40 sec-3 min)</button> 
+<!-- End your code here -->
+
+<script>var text='Random Tiamat Zerg Time for "Overload"';
+function NewTime(maxtime) {
+     var randomnum = Math.floor(Math.random() * (maxtime - 40 + 1)) + 40;
+var min=Math.floor(randomnum/60);
+var sec=randomnum-min*60;
+if (min.toString().length<2) (min="0"+min);
+if (sec.toString().length<2) (sec="0"+sec);
+var zergtime = min+":"+sec;
+document.getElementById("zergtime").innerHTML = text+ "<br>"+zergtime;
+  
+  
+}
+function startTimer(duration) {
+    var timer = duration, minutes, seconds;
+   var refreshIntervalId =  setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      document.getElementById("zergtime").innerHTML = "Zerg time in "+ seconds+" seconds";
+
+        if (--timer < 0) {
+           // timer = duration;
+
+
+     var randomnum = Math.floor(Math.random() * (120 - 40 + 1)) + 40;
+var min=Math.floor(randomnum/60);
+var sec=randomnum-min*60;
+if (min.toString().length<2) (min="0"+min);
+if (sec.toString().length<2) (sec="0"+sec);
+var zergtime = min+":"+sec;
+document.getElementById("zergtime").innerHTML = text+ "<br>"+zergtime;
+      //return;
+ document.getElementById("btn").style.display='block';     document.getElementById("btn2").style.display='block';          
+clearInterval(refreshIntervalId);
+        }
+    }, 1000);
+}
+
+
+window.onload = function(){
+
+var fast = location.search.split('?')[1];
+  if (fast=="fast") {
+    NewTime(120);
+    return;
+  }
+  
+document.getElementById("btn").style.display='none';
+document.getElementById("btn2").style.display='none';  
+startTimer(5);
+
+//window.prompt("Copy to clipboard: Ctrl+C", zergtime);
+ };</script></body>
